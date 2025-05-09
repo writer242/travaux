@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil de Jude Beni BELA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #2ecc71;
+            --progress-blue: #4361ee;
+            --progress-yellow: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .cover-photo {
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.8;
+        }
+
+        .profile-photo-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: -90px auto 20px;
+            z-index: 2;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: block;
+        }
+
+        .profile-info {
+            padding: 20px 30px 40px;
+            text-align: center;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+            text-align: center;
+        }
+
+        .profile-title {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .profile-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        .profile-bio {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .info-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .section-title i {
+            font-size: 26px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .info-item i {
+            color: var(--accent-color);
+            font-size: 20px;
+            margin-top: 3px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .info-value {
+            color: #333;
+            font-size: 16px;
+        }
+
+        .hobbies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .hobby {
+            background-color: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hobby i {
+            color: var(--accent-color);
+            font-size: 14px;
+        }
+
+        /* Compétences avec demi-cercles de progression */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .skill-progress {
+            position: relative;
+            width: 100px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .skill-progress svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .skill-progress circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+        }
+
+        .skill-progress circle:first-child {
+            stroke: #f1f1f1;
+        }
+
+        .skill-progress circle:last-child {
+            stroke-dasharray: 157;
+            stroke-dashoffset: calc(157 - (157 * var(--percent)) / 100);
+            animation: progress 1.5s ease-in-out forwards;
+            stroke: var(--progress-blue);
+        }
+
+        .skill-progress.yellow circle:last-child {
+            stroke: var(--progress-yellow);
+        }
+
+        @keyframes progress {
+            0% {
+                stroke-dashoffset: 157;
+            }
+        }
+
+        .skill-icon {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            background: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: #555;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .skill-percent {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .qualities-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .quality {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* Formulaire de contact mobile */
+        .contact-btn {
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .contact-form-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-form {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .form-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Animation de chargement */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Message de bienvenue */
+        .welcome-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1002;
+            text-align: center;
+            max-width: 80%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .welcome-title {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .welcome-text {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .close-welcome {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Affichage mobile */
+        @media only screen and (max-width: 768px) {
+            .profile-card {
+                border-radius: 10px;
+            }
+
+            .cover-photo {
+                height: 180px;
+            }
+
+            .profile-photo-container {
+                width: 140px;
+                height: 140px;
+                margin: -70px auto 15px;
+            }
+
+            .profile-info {
+                padding: 15px 20px 25px;
+            }
+
+            .profile-name {
+                font-size: 26px;
+            }
+
+            .info-section {
+                min-width: 100%;
+                padding: 25px;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .skill-progress {
+                width: 80px;
+                height: 40px;
+            }
+
+            .skill-icon {
+                font-size: 20px;
+                width: 35px;
+                height: 35px;
+            }
+
+            .contact-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+            <div class="cover-photo"></div>
+            
+            <div class="profile-photo-container">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Jude Beni BELA" class="profile-photo">
+            </div>
+            
+            <div class="profile-info">
+                <h1 class="profile-name">Jude Beni BELA</h1>
+                <p class="profile-title">Développeur Full Stack Junior</p>
+                <p class="profile-bio">
+                    Passionné par le développement web et les nouvelles technologies. 
+                    Actuellement en Licence 2 Réseaux et Systèmes Informatiques, 
+                    je cherche à mettre en pratique mes compétences et à apprendre 
+                    davantage à travers des projets concrets.
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/jude-bela-527a30258?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/writer242"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/writer_242?s=21"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/monsieur___bela?igsh=amh1NXV6ZjBkamZv&utm_source=qr"><i class="fab fa-instagram"></i></a>
+                </div>
+                
+                <button class="contact-btn" id="contactBtn">
+                    <i class="fas fa-paper-plane"></i> Me contacter
+                </button>
+            </div>
+        </div>
+        
+        <div class="info-sections">
+            <div class="info-section">
+                <h2 class="section-title"><i class="fas fa-user"></i> Informations Personnelles</h2>
+                
+                <div class="info-item">
+                    <i class="fas fa-home"></i>
+                    <div>
+                        <div class="info-label">Adresse</div>
+                        <div class="info-value">RUE OKM 58, Dakar ; Senegal</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-birthday-cake"></i>
+                    <div>
+                        <div class="info-label">Date de naissance</div>
+                        <div class="info-value">5 Janvier 2001</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div class="info-label">Email</div>
+                        <div class="info-value">judebela@imscomputers.com</div>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <div class="info-label">Téléphone</div>
+                        <div class="info-value">+221 78 305 26 04</div>
+                    </div>
+                </div>
+                
+                <h3 class="section-title" style="font-size: 20px;"><i class="fas fa-heart"></i> Centres d'intérêt</h3>
+                <div class="hobbies-container">
+                    <span class="hobby"><i class="fas fa-book"></i> Lecture</span>
+                    <span class="hobby"><i class="fas fa-pen"></i> Écriture</span>
+                    <span class="hobby"><i class="fas fa-gamepad"></i> Jeux vidéo</span>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h2 class="section-title"><i class="fas fa-code"></i> Compétences en langages de programmation</h2>
+                
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 80">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                        </div>
+                        <div class="skill-name">HTML</div>
+                        <div class="skill-percent">80%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 70">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                        </div>
+                        <div class="skill-name">CSS</div>
+                        <div class="skill-percent">70%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 80">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-bootstrap"></i></div>
+                        </div>
+                        <div class="skill-name">Bootstrap</div>
+                        <div class="skill-percent">80%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 55">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-js"></i></div>
+                        </div>
+                        <div class="skill-name">JavaScript</div>
+                        <div class="skill-percent">55%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 62">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-php"></i></div>
+                        </div>
+                        <div class="skill-name">PHP</div>
+                        <div class="skill-percent">62%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 50">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                        </div>
+                        <div class="skill-name">MySQL</div>
+                        <div class="skill-percent">50%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 30">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-github"></i></div>
+                        </div>
+                        <div class="skill-name">Git</div>
+                        <div class="skill-percent">30%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 52">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-python"></i></div>
+                        </div>
+                        <div class="skill-name">Python</div>
+                        <div class="skill-percent">52%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 35">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-java"></i></div>
+                        </div>
+                        <div class="skill-name">Java</div>
+                        <div class="skill-percent">35%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 20">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+                        </div>
+                        <div class="skill-name">Flutter</div>
+                        <div class="skill-percent">20%</div>
+                    </div>
+                </div>
+                
+                <h3 class="section-title" style="font-size: 20px; margin-top: 40px;"><i class="fas fa-network-wired"></i> Compétences réseaux</h3>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 80">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-windows"></i></div>
+                        </div>
+                        <div class="skill-name">Admin Windows</div>
+                        <div class="skill-percent">80%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 70">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fab fa-linux"></i></div>
+                        </div>
+                        <div class="skill-name">Admin Linux</div>
+                        <div class="skill-percent">70%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 70">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fas fa-phone-alt"></i></div>
+                        </div>
+                        <div class="skill-name">Téléphonie IP</div>
+                        <div class="skill-percent">70%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 80">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fas fa-wifi"></i></div>
+                        </div>
+                        <div class="skill-name">Réseaux sans fil</div>
+                        <div class="skill-percent">80%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress" style="--percent: 75">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fas fa-ethernet"></i></div>
+                        </div>
+                        <div class="skill-name">Câblage RJ45</div>
+                        <div class="skill-percent">75%</div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-progress yellow" style="--percent: 60">
+                            <svg viewBox="0 0 100 50">
+                                <circle cx="50" cy="50" r="45"></circle>
+                                <circle cx="50" cy="50" r="45"></circle>
+                            </svg>
+                            <div class="skill-icon"><i class="fas fa-route"></i></div>
+                        </div>
+                        <div class="skill-name">Routage IPv4</div>
+                        <div class="skill-percent">60%</div>
+                    </div>
+                </div>
+                
+                <h3 class="section-title" style="font-size: 20px; margin-top: 40px;"><i class="fas fa-star"></i> Qualités</h3>
+                <div class="qualities-container">
+                    <span class="quality">Travail en équipe</span>
+                    <span class="quality">Flexible</span>
+                    <span class="quality">Esprit critique</span>
+                    <span class="quality">Autonome</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Formulaire de contact -->
+    <div class="contact-form-container" id="contactFormContainer">
+        <div class="contact-form">
+            <button class="close-btn" id="closeFormBtn">&times;</button>
+            <h2 class="form-title">Me contacter</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Votre nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Votre email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Votre message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Animation de chargement -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h2>Envoi en cours</h2>
+            <p>Votre message est en train d'être transmis...</p>
+        </div>
+    </div>
+    
+    <!-- Message de bienvenue -->
+    <div class="welcome-message" id="welcomeMessage">
+        <h2 class="welcome-title">Bienvenue sur mon profil !</h2>
+        <p class="welcome-text">
+            Je suis ravi que vous visitiez ma page. N'hésitez pas à explorer mes compétences 
+            et expériences. Pour toute question ou opportunité de collaboration, 
+            vous pouvez me contacter via le formulaire disponible sur mobile.
+        </p>
+        <button class="close-welcome" id="closeWelcomeBtn">Compris</button>
+    </div>
+    
+    <script>
+        // Afficher le message de bienvenue au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('welcomeMessage').style.display = 'block';
+            }, 1000);
+        });
+        
+        // Fermer le message de bienvenue
+        document.getElementById('closeWelcomeBtn').addEventListener('click', function() {
+            document.getElementById('welcomeMessage').style.display = 'none';
+        });
+        
+        // Gestion du formulaire de contact (mobile seulement)
+        document.getElementById('contactBtn').addEventListener('click', function() {
+            document.getElementById('contactFormContainer').style.display = 'flex';
+        });
+        
+        document.getElementById('closeFormBtn').addEventListener('click', function() {
+            document.getElementById('contactFormContainer').style.display = 'none';
+        });
+        
+        // Soumission du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Afficher l'animation de chargement
+            document.getElementById('loader').style.display = 'flex';
+            
+            // Simuler un envoi (dans un cas réel, vous feriez une requête AJAX ici)
+            setTimeout(function() {
+                // Cacher l'animation de chargement
+                document.getElementById('loader').style.display = 'none';
+                
+                // Fermer le formulaire
+                document.getElementById('contactFormContainer').style.display = 'none';
+                
+                // Réinitialiser le formulaire
+                document.getElementById('contactForm').reset();
+                
+                // Afficher un message de succès
+                alert('Merci ! Votre message a été envoyé avec succès. Je vous répondrai dès que possible.');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
