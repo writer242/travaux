@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz des Capitales Africaines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #game-container {
+            margin: 20px auto;
+            width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #map {
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/8/87/Africa_%28orthographic_projection%29.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        #choices button {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+        }
+        #timer {
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Quiz des Capitales Africaines</h1>
+        <div id="menu">
+            <button class="button" onclick="startNewGame()">Nouvelle Partie</button>
+            <button class="button" onclick="continueGame()" id="continueBtn" disabled>Continuer</button>
+            <button class="button" onclick="showHighScores()">Meilleurs Scores</button>
+        </div>
+        <div id="game" style="display: none;">
+            <div id="map"></div>
+            <p>Score: <span id="score">0</span></p>
+            <p>Erreurs restantes: <span id="lives">3</span></p>
+            <p id="timer">Temps: 10</p>
+            <h2 id="question"></h2>
+            <div id="choices"></div>
+        </div>
+        <div id="highscores" style="display: none;">
+            <h2>Meilleurs Scores</h2>
+            <p id="scoresList"></p>
+            <button class="button" onclick="backToMenu()">Retour</button>
+        </div>
+    </div>
+
+    <script>
+        const countries = [
+            { name: "Algérie", capital: "Alger" },
+            { name: "Angola", capital: "Luanda" },
+            { name: "Bénin", capital: "Porto-Novo" },
+            { name: "Botswana", capital: "Gaborone" },
+            { name: "Burkina Faso", capital: "Ouagadougou" },
+            { name: "Burundi", capital: "Gitega" },
+            { name: "Cameroun", capital: "Yaoundé" },
+            { name: "Cap-Vert", capital: "Praia" },
+            { name: "République centrafricaine", capital: "Bangui" },
+            { name: "Tchad", capital: "N'Djaména" },
+            { name: "Comores", capital: "Moroni" },
+            { name: "République du Congo", capital: "Brazzaville" },
+            { name: "République démocratique du Congo", capital: "Kinshasa" },
+            { name: "Côte d'Ivoire", capital: "Yamoussoukro" },
+            { name: "Djibouti", capital: "Djibouti" },
+            { name: "Égypte", capital: "Le Caire" },
+            { name: "Guinée équatoriale", capital: "Malabo" },
+            { name: "Érythrée", capital: "Asmara" },
+            { name: "Eswatini", capital: "Mbabane" },
+            { name: "Éthiopie", capital: "Addis-Abeba" },
+            { name: "Gabon", capital: "Libreville" },
+            { name: "Gambie", capital: "Banjul" },
+            { name: "Ghana", capital: "Accra" },
+            { name: "Guinée", capital: "Conakry" },
+            { name: "Guinée-Bissau", capital: "Bissau" },
+            { name: "Kenya", capital: "Nairobi" },
+            { name: "Lesotho", capital: "Maseru" },
+            { name: "Liberia", capital: "Monrovia" },
+            { name: "Libye", capital: "Tripoli" },
+            { name: "Madagascar", capital: "Antananarivo" },
+            { name: "Malawi", capital: "Lilongwe" },
+            { name: "Mali", capital: "Bamako" },
+            { name: "Maroc", capital: "Rabat" },
+            { name: "Mauritanie", capital: "Nouakchott" },
+            { name: "Maurice", capital: "Port-Louis" },
+            { name: "Mozambique", capital: "Maputo" },
+            { name: "Namibie", capital: "Windhoek" },
+            { name: "Niger", capital: "Niamey" },
+            { name: "Nigeria", capital: "Abuja" },
+            { name: "Ouganda", capital: "Kampala" },
+            { name: "Rwanda", capital: "Kigali" },
+            { name: "Sao Tomé-et-Principe", capital: "São Tomé" },
+            { name: "Sénégal", capital: "Dakar" },
+            { name: "Seychelles", capital: "Victoria" },
+            { name: "Sierra Leone", capital: "Freetown" },
+            { name: "Somalie", capital: "Mogadiscio" },
+            { name: "Afrique du Sud", capital: "Pretoria" },
+            { name: "Soudan du Sud", capital: "Djouba" },
+            { name: "Soudan", capital: "Khartoum" },
+            { name: "Tanzanie", capital: "Dodoma" },
+            { name: "Togo", capital: "Lomé" },
+            { name: "Tunisie", capital: "Tunis" },
+            { name: "Zambie", capital: "Lusaka" },
+            { name: "Zimbabwe", capital: "Harare" }
+        ];
+
+        let score = 0;
+        let lives = 3;
+        let timeLeft = 10;
+        let timer;
+        let currentQuestion = {};
+        let highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+        let gameState = JSON.parse(localStorage.getItem('gameState')) || null;
+
+        if (gameState) document.getElementById('continueBtn').disabled = false;
+
+        function startNewGame() {
+            score = 0;
+            lives = 3;
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('game').style.display = 'block';
+            nextQuestion();
+        }
+
+        function continueGame() {
+            if (!gameState) return;
+            score = gameState.score;
+            lives = gameState.lives;
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('game').style.display = 'block';
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            if (lives <= 0) {
+                endGame();
+                return;
+            }
+            clearInterval(timer);
+            timeLeft = 10;
+            updateDisplay();
+            timer = setInterval(updateTimer, 1000);
+
+            const country = countries[Math.floor(Math.random() * countries.length)];
+            currentQuestion = country;
+            const correctAnswer = country.capital;
+            const wrongAnswers = countries
+                .filter(c => c.capital !== correctAnswer)
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 2)
+                .map(c => c.capital);
+            const choices = [...wrongAnswers, correctAnswer].sort(() => Math.random() - 0.5);
+
+            document.getElementById('question').textContent = `Quelle est la capitale de ${country.name} ?`;
+            const choicesDiv = document.getElementById('choices');
+            choicesDiv.innerHTML = '';
+            choices.forEach(choice => {
+                const btn = document.createElement('button');
+                btn.className = 'button';
+                btn.textContent = choice;
+                btn.onclick = () => checkAnswer(choice, correctAnswer);
+                choicesDiv.appendChild(btn);
+            });
+
+            saveGameState();
+        }
+
+        function checkAnswer(selected, correct) {
+            clearInterval(timer);
+            if (selected === correct) {
+                score += 10;
+            } else {
+                lives--;
+            }
+            updateDisplay();
+            setTimeout(nextQuestion, 1000);
+        }
+
+        function updateTimer() {
+            timeLeft--;
+            document.getElementById('timer').textContent = `Temps: ${timeLeft}`;
+            if (timeLeft <= 0) {
+                lives--;
+                updateDisplay();
+                nextQuestion();
+            }
+        }
+
+        function updateDisplay() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('lives').textContent = lives;
+            document.getElementById('timer').textContent = `Temps: ${timeLeft}`;
+        }
+
+        function endGame() {
+            clearInterval(timer);
+            highScores.push(score);
+            highScores.sort((a, b) => b - a);
+            highScores = highScores.slice(0, 5);
+            localStorage.setItem('highScores', JSON.stringify(highScores));
+            localStorage.removeItem('gameState');
+            alert(`Jeu terminé ! Votre score: ${score}`);
+            showHighScores();
+        }
+
+        function saveGameState() {
+            gameState = { score, lives };
+            localStorage.setItem('gameState', JSON.stringify(gameState));
+        }
+
+        function showHighScores() {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('game').style.display = 'none';
+            document.getElementById('highscores').style.display = 'block';
+            document.getElementById('scoresList').textContent = highScores.join(', ') || 'Aucun score';
+        }
+
+        function backToMenu() {
+            document.getElementById('highscores').style.display = 'none';
+            document.getElementById('menu').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
