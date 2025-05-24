@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Communauté Congolaise - ISI Dakar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #121212;
+      --text-light: #222;
+      --text-dark: #f0f0f0;
+      --primary: #008000;
+      --primary-dark: #005f2f;
+      --secondary: #f0a500;
+      --accent: #ffd700;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header {
+      background: linear-gradient(135deg, #00a859, #006633);
+      color: white;
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/1200px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png') no-repeat;
+      background-size: cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      z-index: 1100;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    nav a i {
+      font-size: 1.2rem;
+    }
+
+    #toggle-darkmode {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    #toggle-darkmode:hover {
+      background: var(--primary-dark);
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    section h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--secondary);
+    }
+
+    .dark-mode section h2 {
+      color: var(--accent);
+    }
+
+    .member-grid, .gallery-grid, .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .member-card, .event-card, .gallery-grid img {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+
+    body.dark-mode .member-card, 
+    body.dark-mode .event-card,
+    body.dark-mode form {
+      background: #1e1e1e;
+      border: 1px solid #333;
+    }
+
+    .member-card:hover, 
+    .gallery-grid img:hover,
+    .event-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .member-card {
+      text-align: center;
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    .member-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      border: 3px solid var(--primary);
+    }
+
+    .member-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .member-social a {
+      color: var(--primary);
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .member-social a:hover {
+      color: var(--secondary);
+    }
+
+    .event-card {
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .event-date {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: var(--secondary);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .event-date .day {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .event-date .month {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .event-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      padding-right: 40px;
+    }
+
+    .event-card p {
+      margin-bottom: 1rem;
+    }
+
+    .event-card .event-location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--secondary);
+      font-size: 0.9rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* images plus grandes */
+      gap: 0; /* plus d'espace entre les images */
+      justify-items: stretch;
+      align-items: stretch;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 350px; /* augmente la hauteur pour des images plus grandes */
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border-radius: 0; /* pas d'arrondi */
+      box-shadow: none; /* pas d'ombre si tu veux un effet collage */
+      margin: 0;
+      display: block;
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      flex-direction: column;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    #lightbox-caption {
+      color: white;
+      text-align: center;
+      max-width: 80%;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    form label {
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    .dark-mode form label {
+      color: var(--accent);
+    }
+
+    form input, form textarea, form select {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    form input:focus, form textarea:focus, form select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(0, 168, 89, 0.2);
+    }
+
+    form button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    form button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .form-message {
+      padding: 1rem;
+      border-radius: 5px;
+      margin-top: 1rem;
+      text-align: center;
+      display: none;
+    }
+
+    .form-message.success {
+      background: rgba(0, 168, 89, 0.2);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      display: block;
+    }
+
+    .form-message.error {
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff3333;
+      border: 1px solid #ff3333;
+      display: block;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #006633, #004d26);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-column h3::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      color: #222;
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/cover.jpg') no-repeat center center/cover;
+      color: white;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-text h2 {
+      text-align: left;
+    }
+
+    .about-text h2::after {
+      left: 0;
+      transform: none;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(0, 168, 89, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .dark-mode .stat-item {
+      background: rgba(0, 168, 89, 0.2);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .dark-mode .stat-number {
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .dark-mode .stat-label {
+      color: #aaa;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-text h2 {
+        text-align: center;
+      }
+      
+      .about-text h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #006633;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        padding-top: 5rem;
+        transition: left 0.3s ease-in-out;
+        z-index: 999;
+      }
+
+      nav ul.active {
+        left: 0;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero {
+        padding: 3rem 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      form {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+  
+  <div class="hero">
+    <h1>Communauté Congolaise de l'ISI Dakar</h1>
+    <p>Unis par notre culture, notre solidarité et notre engagement pour la réussite académique</p>
+    <a href="#contact" class="btn">Nous contacter</a>
+  </div>
+
+  <header>
+    <h1>Communauté Congolaise de l'ISI Dakar</h1>
+    <nav>
+      <ul id="menu">
+        <li><a href="#about"><i class="fas fa-info-circle"></i> À propos</a></li>
+        <li><a href="#members"><i class="fas fa-users"></i> Membres</a></li>
+        <li><a href="#events"><i class="fas fa-calendar-alt"></i> Événements</a></li>
+        <li><a href="#gallery"><i class="fas fa-images"></i> Galerie</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+    </nav>
+    <button id="toggle-darkmode"><i class="fas fa-moon"></i> Mode sombre</button>
+  </header>
+
+  <section id="about">
+    <div class="about-content">
+      <div class="about-image">
+        <img src="/img/communauté_congolaise.jpg" alt="Étudiants congolais">
+      </div>
+      <div class="about-text">
+        <h2>À propos de nous</h2>
+        <p>La Communauté Congolaise de l'Institut Supérieur d'Informatique (ISI) de Dakar est une association estudiantine qui regroupe les étudiants congolais résidant au Sénégal. Notre mission est de promouvoir l'entraide, la culture congolaise et l'excellence académique.</p>
+        <p>Fondée en 2010, notre communauté compte aujourd'hui plus de 50 membres actifs et organise régulièrement des événements culturels, des séminaires académiques et des activités de networking.</p>
+        
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-number">70+</div>
+            <div class="stat-label">Membres</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Événements/an</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">10</div>
+            <div class="stat-label">Ans d'existence</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Départements</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="members">
+    <h2>Notre Bureau</h2>
+    <div class="member-grid">
+      <div class="member-card">
+        <img src="#" alt="Président"/>
+        <h3>Jude BELA</h3>
+        <p>Président</p>
+        <p>Licence 2 en Reseau Informatique</p>
+        <div class="member-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="#" alt="Vice-Présidente"/>
+        <h3>Mulho MABIALA</h3>
+        <p>Vice-Présidente</p>
+        <p>Master 1 en Génie Logiciel</p>
+        <div class="member-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="#" alt="Secrétaire Général"/>
+        <h3>Youch Jonathan</h3>
+        <p>Secrétaire Général</p>
+        <p>Licence 2 en Réseaux Informatiques</p>
+        <div class="member-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="#" alt="Trésorière"/>
+        <h3>Olivia DIALLO</h3>
+        <p>Trésorière</p>
+        <p>Licence 2 en Systemes embarqués</p>
+        <div class="member-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="#" alt="Trésorière"/>
+        <h3>Gracia MBUITY</h3>
+        <p>Charger d'organisation</p>
+        <p>Licence 2 en Reseaux Telecomunication</p>
+        <div class="member-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="member-card">
+        <img src="#" alt="Trésorière"/>
+        <h3>Florianne</h3>
+        <p>Charger de communication</p>
+        <p>Licence 1 en Reseaux Telecomunication</p>
+        <div class="member-social">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <h2>Nos Événements</h2>
+    <div class="event-grid">
+      <div class="event-card">
+        <div class="event-date">
+          <span class="day">23</span>
+          <span class="month">Mai</span>
+        </div>
+        <h3>Journée Culturelle Congolaise</h3>
+        <p>Une journée dédiée à la célébration de la culture congolaise avec danse, musique et cuisine traditionnelle.</p>
+        <div class="event-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Magique Land</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">
+          <span class="day">15</span>
+          <span class="month">Aout</span>
+        </div>
+        <h3>Fête de l'independance</h3>
+        <p>Une journée de festivités et de plaisir pour tous les membres de la communauté.</p>
+        <div class="event-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Salle AS21, ISI Dakar</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">
+          <span class="day">21</span>
+          <span class="month">Aout</span>
+        </div>
+        <h3>Atelier de Coding</h3>
+        <p>Session pratique de développement web et mobile pour les membres de la communauté.</p>
+        <div class="event-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Labo Informatique, Bâtiment AS</span>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date">
+          <span class="day">30</span>
+          <span class="month">Août</span>
+        </div>
+        <h3>Reunion du conseil</h3>
+        <p>Réunion de rentrée pour accueillir les nouveaux étudiants et planifier l'année académique.</p>
+        <div class="event-location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>ISI FASS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Galerie Photo</h2>
+    <div class="gallery-grid">
+      <img src="/img/dkr_comedie.jpg" alt="dkr_comedie" data-caption="dkr_comedie">
+      <img src="/img/journée_maillot1.jpg" alt="Sjournée_maillot1" data-caption="Sjournée_maillot1">
+      <img src="/img/journée_maillot2.jpg" alt="journée_maillot2" data-caption="journée_maillot2">
+      <img src="/img/parc_hann.jpg" alt="parc_hann" data-caption="parc_hann">
+        <img src="/img/rdc.jpg" alt="rdc" data-caption="rdc">
+        <img src="/img/dance.jpg" alt="dance" data-caption="dance">
+    </div>
+  </section>
+
+  <div id="lightbox">
+    <span id="lightbox-close">&times;</span>
+    <img src="" alt="">
+    <div id="lightbox-caption"></div>
+  </div>
+
+  <section id="contact">
+    <h2>Contactez-nous</h2>
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="name">Votre nom complet</label>
+        <input type="text" id="name" placeholder="Jean Malonga" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Votre email</label>
+        <input type="email" id="email" placeholder="jeanmalonga@gmail.com" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="subject">Sujet</label>
+        <select id="subject" required>
+          <option value="" disabled selected>Sélectionnez un sujet</option>
+          <option value="membership">Adhésion à la communauté</option>
+          <option value="event">Question sur un événement</option>
+          <option value="partnership">Partenariat</option>
+          <option value="other">Autre</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Votre message</label>
+        <textarea id="message" rows="5" placeholder="Votre message ici..." required></textarea>
+      </div>
+      
+      <button type="submit"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
+      
+      <div class="form-message"></div>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Communauté Congolaise</h3>
+        <p>Institut Supérieur d'Informatique de Dakar</p>
+        <p>Promouvant la culture, la solidarité et l'excellence académique depuis 2010.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fas fa-globe"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <!-- Ajoute ici la section partenaires -->
+        <h3>Partenaires</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="https://www.groupeisi.com/" target="_blank">
+              <i class="fas fa-university"></i> ISI DAKAR
+            </a>
+          </li>
+          <li>
+            <a href="https://imscomputers.com/" target="_blank">
+              <i class="fas fa-building"></i> IMS COMPUTERS
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Liens rapides</h3>
+        <ul class="footer-links">
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> À propos</a></li>
+          <li><a href="#members"><i class="fas fa-chevron-right"></i> Membres</a></li>
+          <li><a href="#events"><i class="fas fa-chevron-right"></i> Événements</a></li>
+          <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Galerie</a></li>
+          <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h3>Coordonnées</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> ISI Dakar, BP 12345, Sénégal</a></li>
+          <li><a href="mailto:contact@congoisidakar.com"><i class="fas fa-envelope"></i> contact@congoisidakar.com</a></li>
+          <li><a href="tel:+221781234567"><i class="fas fa-phone"></i> +221 78 123 45 67</a></li>
+          <li><a href="https://wa.me/221781234567"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Communauté Congolaise - ISI Dakar. Tous droits réservés.</p>
+    </div>
+  </footer>
+  
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById("toggle-darkmode");
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Mode clair';
+      } else {
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Mode sombre';
+      }
+    });
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+    // Lightbox Gallery
+    const galleryImages = document.querySelectorAll(".gallery-grid img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = lightbox.querySelector("img");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const lightboxClose = document.getElementById("lightbox-close");
+
+    galleryImages.forEach(img => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = img.dataset.caption || "";
+        lightbox.style.display = "flex";
+      });
+    });
+
+    lightboxClose.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        lightbox.style.display = "none";
+      }
+    });
+
+    // Back to Top Button
+    const backToTop = document.getElementById("backToTop");
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    // Affiche le bouton quand on scrolle
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        backToTop.classList.add("visible");
+      } else {
+        backToTop.classList.remove("visible");
+      }
+    });
+  </script>
+</body>
+</html>
