@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Crêpes de Beltrech19 - Crêperie</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Crêpes & pancakes artisanaux. Commande en ligne, retrait rapide, qualité premium.">
+  <link rel="icon" href="./image/bel.jpg" type="image/jpg">
+
+  <!-- Polices & Icônes -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+  <link rel="manifest" href="manifest.json">
+  <style>
+    /* ===== Thèmes ===== */
+    :root[data-theme="light"] {
+      --orange: #FF7A45;
+      --orange-2: #FF8F5F;
+      --orange-dark: #E56531;
+      --yellow: #9C6B00;
+      /* plus doux sur clair */
+      --bg: #f7f8fb;
+      --bg-grad1: #ffffff;
+      --bg-grad2: #eef2f7;
+      --card: #ffffff;
+      --card-2: #fafbff;
+      --text: #1b1f2a;
+      --muted: #566070;
+      --line: #e6e9f0;
+      --accent: #0E9F6E;
+      --danger: #D92D20;
+      --success: #16A34A;
+      --shadow: 0 10px 30px rgba(16, 24, 40, .08);
+      --radius: 18px;
+      --glass: rgba(0, 0, 0, .02);
+    }
+
+    :root[data-theme="dark"] {
+      --orange: #FF7A45;
+      --orange-2: #FF8F5F;
+      --orange-dark: #E56531;
+      --yellow: #FFC107;
+      --bg: #0E0F13;
+      --bg-grad1: #1F2230;
+      --bg-grad2: #1E2738;
+      --card: #151820;
+      --card-2: #1A1F2B;
+      --text: #EDEFF5;
+      --muted: #9AA3B2;
+      --line: #232838;
+      --accent: #6EE7B7;
+      --danger: #FF5A5A;
+      --success: #22C55E;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      --radius: 18px;
+      --glass: rgba(255, 255, 255, .04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, var(--bg-grad1) 0%, var(--bg) 45%) no-repeat,
+        radial-gradient(900px 600px at 110% 10%, var(--bg-grad2) 0%, var(--bg) 50%) no-repeat,
+        var(--bg);
+      line-height: 1.6;
+      padding-left: 340px;
+      /* espace pour le panier sur desktop */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    img {
+      display: block;
+      max-width: 100%
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px)
+    }
+
+    .navbar {
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .8), rgba(255, 255, 255, .6))
+    }
+
+    :root[data-theme="dark"] .navbar {
+      background: linear-gradient(180deg, rgba(18, 22, 31, .9), rgba(18, 22, 31, .6))
+    }
+
+    .navbar .inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo-wrap img {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff1;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .05);
+      transition: transform .2s ease;
+    }
+
+    .logo-wrap img:hover {
+      transform: scale(1.04)
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px
+    }
+
+    .brand span {
+      color: var(--orange)
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 26px
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 12px;
+      color: var(--muted);
+      transition: all .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: #00000008
+    }
+
+    :root[data-theme="dark"] .nav-links a:hover {
+      background: #ffffff12
+    }
+
+    .ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 14px;
+      font-weight: 600;
+      cursor: pointer
+    }
+
+    .mobile-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 26px;
+      color: var(--text)
+    }
+
+    /* ===== Panier latéral ===== */
+    .cart {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 340px;
+      background: linear-gradient(180deg, var(--card-2), var(--card));
+      border-right: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      z-index: 900;
+      overflow: auto;
+    }
+
+    .cart .head {
+      position: sticky;
+      top: 64px;
+      background: rgba(255, 255, 255, .85);
+      backdrop-filter: blur(10px);
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    :root[data-theme="dark"] .cart .head {
+      background: rgba(14, 15, 19, .85)
+    }
+
+    .cart h3 {
+      font-size: 18px;
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .cart .close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 22px;
+      cursor: pointer
+    }
+
+    .cart .content {
+      padding: 90px 16px 24px
+    }
+
+    .empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 24px 10px;
+      border: 1px dashed #0000001a;
+      border-radius: 12px;
+      background: #00000005
+    }
+
+    :root[data-theme="dark"] .empty {
+      border-color: #ffffff1a;
+      background: #ffffff05
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .cart-item img {
+      height: 56px;
+      width: 56px;
+      border-radius: 10px;
+      object-fit: cover
+    }
+
+    .ci-title {
+      font-weight: 600
+    }
+
+    .ci-meta {
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    .ci-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .qty-btn {
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: #00000008;
+      color: var(--text);
+      cursor: pointer
+    }
+
+    :root[data-theme="dark"] .qty-btn {
+      background: #ffffff0e
+    }
+
+    .remove {
+      background: #0000000a;
+      border: 1px solid #0000001a;
+      color: #b42318;
+      padding: 6px 10px;
+      border-radius: 10px;
+      cursor: pointer
+    }
+
+    :root[data-theme="dark"] .remove {
+      background: #ffffff0a;
+      border-color: #ffffff1a;
+      color: #ff9b9b
+    }
+
+    .total {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700
+    }
+
+    .checkout {
+      margin-top: 18px;
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 12px
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .field {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text)
+    }
+
+    :root[data-theme="dark"] .field {
+      background: #0E121A
+    }
+
+    .checkout .cta {
+      width: 100%;
+      justify-content: center
+    }
+
+    /* ===== Toast ===== */
+    .toast {
+      position: fixed;
+      top: 92px;
+      right: 24px;
+      transform: translateX(140%);
+      transition: transform .25s ease-out;
+      background: linear-gradient(135deg, #FFFFFF, #F1F5F9);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--success);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      z-index: 1100;
+    }
+
+    :root[data-theme="dark"] .toast {
+      background: linear-gradient(135deg, #1B2332, #101522);
+      border-color: #2A3042
+    }
+
+    .toast.show {
+      transform: translateX(0)
+    }
+
+    .toast i {
+      margin-right: 8px;
+      color: var(--success)
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 110px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .65), rgba(255, 255, 255, .85)),
+        url('./image/ban1.jpg') center/cover no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
+
+    :root[data-theme="dark"] .hero {
+      background:
+        linear-gradient(180deg, rgba(14, 15, 19, .5), rgba(14, 15, 19, .8)),
+        url('./image/ban1.jpg') center/cover no-repeat;
+    }
+
+    .hero .wrap {
+      max-width: 880px;
+      padding: 24px
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 14px
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 24px
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      color: #121212;
+      border: none;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 14px;
+      box-shadow: 0 10px 18px rgba(255, 122, 69, .18);
+      cursor: pointer;
+      transition: transform .15s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px)
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 80px 0
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 32px
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--orange);
+      display: inline-block;
+      position: relative;
+      padding-bottom: 10px
+    }
+
+    .section-title h2:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 84px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--yellow));
+      border-radius: 10px;
+    }
+
+    /* ===== Menu grid ===== */
+    .menu-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 992px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card-2), var(--card));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px)
+    }
+
+    .thumb {
+      height: 180px;
+      overflow: hidden
+    }
+
+    .thumb img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform .4s ease
+    }
+
+    .card:hover .thumb img {
+      transform: scale(1.06)
+    }
+
+    .card-body {
+      padding: 14px
+    }
+
+    .card h3 {
+      color: var(--yellow);
+      font-size: 18px;
+      margin-bottom: 6px
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0;
+      font-weight: 800;
+      color: var(--orange)
+    }
+
+    .price small {
+      color: var(--muted);
+      font-weight: 500
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #00000005;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 6px;
+    }
+
+    :root[data-theme="dark"] .qty {
+      background: #ffffff08
+    }
+
+    .qty button {
+      height: 28px;
+      width: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #00000008;
+      color: var(--text);
+      cursor: pointer
+    }
+
+    :root[data-theme="dark"] .qty button {
+      background: #ffffff10
+    }
+
+    .qty input {
+      width: 46px;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      padding: 6px 2px
+    }
+
+    :root[data-theme="dark"] .qty input {
+      background: #0E121A
+    }
+
+    .add {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      color: #121212;
+      font-weight: 800;
+      cursor: pointer
+    }
+
+    /* ===== À propos ===== */
+    .about {
+      padding-bottom: 110px
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center
+    }
+
+    .about-card {
+      background: linear-gradient(180deg, var(--card-2), var(--card));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px
+    }
+
+    .kpi {
+      background: #00000005;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center
+    }
+
+    :root[data-theme="dark"] .kpi {
+      background: #ffffff08
+    }
+
+    .kpi strong {
+      font-size: 18px
+    }
+
+    .about-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #11151F;
+      transform: scale(0.85);
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid var(--line);
+      background: #fff
+    }
+
+    :root[data-theme="dark"] footer {
+      background: #0E1017
+    }
+
+    .footer {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 28px 40px;
+      /* espacement égal G/D */
+    }
+
+    @media (max-width: 992px) {
+      .footer {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .footer {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 1 section par ligne sur mobile */
+    .foot-title {
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 10px
+    }
+
+    .foot p,
+    .foot li {
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      width: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      margin-right: 8px
+    }
+
+    .copyright {
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
+      padding: 14px 0;
+      font-size: 17px
+    }
+
+    .copyright a {
+      color: #ff4800;
+      font-weight: 700
+    }
+
+    /* ===== Responsive navbar & panier ===== */
+    @media (max-width:992px) {
+      body {
+        padding-left: 0
+      }
+
+      .cart {
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        top: 0
+      }
+
+      .cart.open {
+        transform: translateX(0)
+      }
+
+      .mobile-btn {
+        display: block
+      }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 60px;
+        background: var(--card-2);
+        border-bottom: 1px solid var(--line);
+        padding: 12px 18px;
+        z-index: 900
+      }
+
+      .nav-links.show {
+        display: flex;
+        flex-direction: column;
+        gap: 12px
+      }
+
+      .cart-toggle {
+        position: fixed;
+        bottom: 18px;
+        right: 18px;
+        height: 56px;
+        width: 56px;
+        border-radius: 50%;
+        border: none;
+        background: linear-gradient(135deg, var(--orange), var(--orange-2));
+        color: #111;
+        font-size: 22px;
+        z-index: 950;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: center
+      }
+    }
+
+    @media (max-width:640px) {
+      .hero {
+        min-height: 78vh
+      }
+
+      .hero h1 {
+        font-size: 34px
+      }
+
+      .hero p {
+        font-size: 15px
+      }
+
+      .about-wrap {
+        grid-template-columns: 1fr
+      }
+
+      .kpis {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    /* Styles pour l'option d'installation mobile */
+    #install-container {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .install-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-weight: 600;
+      justify-content: center;
+    }
+
+    .install-button:hover {
+      color: #FFE5D9;
+    }
+
+    /* Masquer l'option sur desktop */
+    @media (min-width: 769px) {
+      #install-container {
+        display: none !important;
+      }
+    }
+
+    /* ===== Écran de démarrage ===== */
+    /* Écran de lancement */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.6s ease;
+      /* 👈 transition obligatoire */
+    }
+
+    :root[data-theme="dark"] #splash-screen {
+      background: #0E0F13;
+    }
+
+    .splash-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid var(--orange);
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    .splash-text {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .splash-text span:first-child {
+      color: var(--text);
+    }
+
+    .splash-text span:last-child {
+      color: var(--orange);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 122, 69, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 15px rgba(255, 122, 69, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 122, 69, 0);
+      }
+    }
+
+    /* Correction pour le bouton panier mobile */
+    .cart-toggle {
+      display: flex !important;
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      height: 56px;
+      width: 56px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      color: #ffffff;
+      font-size: 22px;
+      z-index: 950;
+      box-shadow: var(--shadow);
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Cacher l'écran de démarrage */
+    #splash-screen {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Écran de démarrage -->
+  <div id="splash-screen">
+    <img src="./image/bel.jpg" alt="Logo Chez Beltrech19" class="splash-logo">
+    <div class="splash-text">
+      <span>Chez </span>
+      <span>Beltrech19</span>
+    </div>
+  </div>
+  <!-- ===== PANIER ===== -->
+  <aside class="cart" id="cart">
+    <div class="head">
+      <h3><i class="fa-solid fa-bag-shopping"></i> Votre panier</h3>
+      <button class="close" id="closeCart" title="Fermer le panier">&times;</button>
+    </div>
+    <div class="content">
+      <div id="cartItems" class="empty">Votre panier est vide</div>
+
+      <div class="total">
+        <span>Total</span>
+        <strong id="cartTotal">0 CFA</strong>
+      </div>
+
+      <div class="checkout">
+        <div class="form-group">
+          <label for="name">Nom complet</label>
+          <input class="field" type="text" id="name" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone</label>
+          <input class="field" type="tel" id="phone" placeholder="+242 06..." required>
+        </div>
+        <div class="form-group">
+          <label for="date">Date de récupération</label>
+          <input class="field" type="date" id="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Heure de récupération</label>
+          <input type="time" class="field" id="time" name="time" min="08:00" max="19:00" step="300" required>
+          <small style="display:block; margin-top:5px; color:var(--muted);">
+            Heures d'ouverture: 8h - 19h
+          </small>
+        </div>
+        <div class="delivery-option" style="margin-top: 15px;">
+          <label>
+            <input type="checkbox" id="deliveryCheck"> Livraison
+          </label>
+          <input type="text" id="deliveryAddress" placeholder="Entrez le lieu de livraison"
+            style="display:none;margin-top:8px;width:100%;padding:8px;border:1px solid var(--line);border-radius:6px;">
+        </div>
+        <br>
+        <br>
+
+
+
+        <button id="checkoutBtn" class="cta"><i class="fa-solid fa-check"></i> Valider la commande</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Bouton panier mobile -->
+  <button class="cart-toggle" id="cartToggle" aria-label="Ouvrir le panier" title="Panier" style="display:none"><i
+      class="fa-solid fa-cart-plus"></i></button>
+
+  <!-- ===== TOAST ===== -->
+  <div id="toast" class="toast"><i class="fa-solid fa-circle-check"></i> Produit ajouté au panier</div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="navbar">
+    <div class="inner container">
+      <div class="logo-wrap">
+        <img src="./image/bel.jpg" alt="Logo Les Crêpes de Beltrech19">
+        <div class="brand">Les Crêpes de <span>Beltrech19</span></div>
+      </div>
+
+      <button class="mobile-btn" id="mobileBtn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Accueil</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#contact">Contacts</a></li>
+        <!-- Bouton changement de thème dans le menu déroulant -->
+        <li>
+          <button id="themeToggle" class="ghost" style="width:100%;margin-top:4px;">
+            <i class="fa-solid fa-moon"></i> changer de thème
+          </button>
+        </li>
+        <!-- Option pour installer l'app dans le menu burger -->
+        <li id="install-container" style="display: none;">
+          <a href="#" id="install-button-mobile" class="install-button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17 18L19 20H21M12 15V3M12 15L8 11M12 15L16 11M5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V15C21 14.4696 20.7893 13.9609 20.4142 13.5858C20.0391 13.2107 19.5304 13 19 13H5C4.46957 13 3.96086 13.2107 3.58579 13.5858C3.21071 13.9609 3 14.4696 3 15V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21Z"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Installer l'app
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="wrap container">
+      <h1>Crêpes artisanales, <br>qualité premium & service rapide</h1>
+      <p>Ingrédients frais, recettes maîtrisées, retrait en quelques minutes. Commandez vos crêpes & pancakes préférés.
+      </p>
+      <div class="hero-cta">
+        <a class="cta" href="#menu"><i class="fa-solid fa-utensils"></i> Voir le menu</a>
+        <a class="ghost" href="#about"><i class="fa-regular fa-circle-question"></i> En savoir plus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-title">
+        <h2>Notre Menu</h2>
+      </div>
+
+      <div class="menu-grid">
+        <article class="card">
+          <div class="thumb"><img src="./image/cnature.jpg" alt="Crêpe nature"></div>
+          <div class="card-body">
+            <h3>Crêpe Nature</h3>
+            <p>Classique et légère, parfaite à toute heure.</p>
+            <div class="price"><span data-price="200">200 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus" aria-label="Diminuer">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus" aria-label="Augmenter">+</button>
+              </div>
+              <button class="add" data-id="c-nature" data-name="Crêpe Nature" data-price="200"
+                data-img="./image/cnature.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cmiel.jpg" alt="Crêpe au miel"></div>
+          <div class="card-body">
+            <h3>Crêpe au Miel</h3>
+            <p>Une touche sucrée au miel de fleurs.</p>
+            <div class="price"><span data-price="250">250 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-miel" data-name="Crêpe au miel" data-price="250"
+                data-img="./image/cmiel.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cbanane.jpg" alt="Crêpe banane"></div>
+          <div class="card-body">
+            <h3>Crêpe Banane</h3>
+            <p>Rondeur et douceur de la banane.</p>
+            <div class="price"><span data-price="250">250 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-banane" data-name="Crêpe Banane" data-price="250"
+                data-img="./image/cbanane.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cananas.jpg" alt="Crêpe ananas"></div>
+          <div class="card-body">
+            <h3>Crêpe Ananas</h3>
+            <p>Fraîcheur fruitée, note exotique.</p>
+            <div class="price"><span data-price="250">250 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-ananas" data-name="Crêpe Ananas" data-price="250"
+                data-img="./image/cananas.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cchocolat.jpg" alt="Crêpe chocolat"></div>
+          <div class="card-body">
+            <h3>Crêpe Chocolat</h3>
+            <p>Généreusement nappée de chocolat.</p>
+            <div class="price"><span data-price="300">300 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-choco" data-name="Crêpe Chocolat" data-price="300"
+                data-img="./image/cchocolat.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cjambon.jpg" alt="Crêpe jambon"></div>
+          <div class="card-body">
+            <h3>Crêpe Jambon</h3>
+            <p>Classique salé, jambon de qualité.</p>
+            <div class="price"><span data-price="500">500 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-jambon" data-name="Crêpe Jambon" data-price="500"
+                data-img="./image/cjambon.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cfromage.jpg" alt="Crêpe fromage"></div>
+          <div class="card-body">
+            <h3>Crêpe Fromage</h3>
+            <p>Fondante et réconfortante.</p>
+            <div class="price"><span data-price="500">500 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-fromage" data-name="Crêpe Fromage" data-price="500"
+                data-img="./image/cfromage.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/csaucisson.jpg" alt="Crêpe saucisson"></div>
+          <div class="card-body">
+            <h3>Crêpe Saucisson</h3>
+            <p>Caractère et gourmandise.</p>
+            <div class="price"><span data-price="600">600 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-saucisson" data-name="Crêpe Saucisson" data-price="600"
+                data-img="./image/csaucisson.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cpaté.jpg" alt="Crêpe pâté"></div>
+          <div class="card-body">
+            <h3>Crêpe Pâté</h3>
+            <p>Gourmande, texture unique.</p>
+            <div class="price"><span data-price="700">700 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-pate" data-name="Crêpe Pâté" data-price="700" data-img="./image/cpaté.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/cjambon_fromage.jpg" alt="Crêpe fromage/jambon"></div>
+          <div class="card-body">
+            <h3>Crêpe Fromage/Jambon</h3>
+            <p>Le duo gagnant, simple et efficace.</p>
+            <div class="price"><span data-price="700">700 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="c-fromage-jambon" data-name="Crêpe Fromage/Jambon" data-price="700"
+                data-img="./image/cjambon_fromage.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pancakes -->
+        <article class="card">
+          <div class="thumb"><img src="./image/pmiel.jpg" alt="Pancake miel"></div>
+          <div class="card-body">
+            <h3>Pancake au Miel</h3>
+            <p>Doux et moelleux, nappé de miel.</p>
+            <div class="price"><span data-price="500">500 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="p-miel" data-name="Pancake au Miel" data-price="500"
+                data-img="./image/pmiel.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/pchocolat.jpg" alt="Pancake chocolat"></div>
+          <div class="card-body">
+            <h3>Pancake au Chocolat</h3>
+            <p>Ultra gourmand, chocolat fondant.</p>
+            <div class="price"><span data-price="500">500 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="p-choco" data-name="Pancake au Chocolat" data-price="500"
+                data-img="./image/pchocolat.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/pjambon.jpg" alt="Pancake jambon"></div>
+          <div class="card-body">
+            <h3>Pancake au Jambon</h3>
+            <p>Version salée, moelleuse et généreuse.</p>
+            <div class="price"><span data-price="1000">1000 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="p-jambon" data-name="Pancake au Jambon" data-price="1000"
+                data-img="./image/pjambon.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="./image/pbelrech.jpg" alt="Pancake Beltrech19"></div>
+          <div class="card-body">
+            <h3>Pancake Beltrech19</h3>
+            <p>La spéciale maison, un must-try !</p>
+            <div class="price"><span data-price="1500">1500 CFA</span><small>/ unité</small></div>
+            <div class="actions">
+              <div class="qty">
+                <button class="minus">−</button>
+                <input type="number" min="1" value="1">
+                <button class="plus">+</button>
+              </div>
+              <button class="add" data-id="p-beltrech" data-name="Pancake Beltrech19" data-price="1500"
+                data-img="./image/pbelrech.jpg">
+                <i class="fa-solid fa-cart-plus"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>À propos de nous</h2>
+      </div>
+
+      <div class="about-wrap">
+        <div class="about-card">
+          <p>Depuis le <strong>10 juin 2024</strong>, Les Crêpes de Beltrech19 ravissent les papilles avec des recettes
+            préparées à partir d’ingrédients frais et locaux. Notre exigence garantit une
+            cuisson parfaite et un goût inoubliable.</p>
+
+          <div class="kpis">
+            <div class="kpi"><strong>15 min</strong>
+              <div class="ci-meta">Retrait moyen</div>
+            </div>
+            <div class="kpi"><strong>+100</strong>
+              <div class="ci-meta">Clients servis</div>
+            </div>
+            <div class="kpi"><strong>4.8/5</strong>
+              <div class="ci-meta">Avis clients</div>
+            </div>
+            <div class="kpi"><strong>100%</strong>
+              <div class="ci-meta">Fait maison</div>
+            </div>
+          </div> <br>
+          <p>Notre équipe passionnée met tout en œuvre pour vous offrir une expérience unique. Nous croyons en la
+            qualité et la simplicité, avec un service rapide et efficace.</p>
+        </div>
+
+        <div class="about-img">
+          <img src="./image/binn.png" alt="Équipe de la crêperie">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / FOOTER ===== -->
+  <footer id="contact">
+    <div class="container footer">
+      <div class="foot">
+        <div class="foot-title">Les Crêpes de Beltrech19</div>
+        <p>Des crêpes artisanales préparées avec des ingrédients frais et de qualité pour votre plus grand plaisir.</p>
+        <div class="social" style="margin-top:10px">
+          <a href="https://www.facebook.com/binn.beltrech?mibextid=wwXIfr&mibextid=wwXIfr" aria-label="Facebook"><i
+              class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/beltrech19?igsh=ZGRwN3hycW0xdmo0&utm_source=qr" aria-label="Instagram"><i
+              class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/242069737400" target="_blank" rel="noopener" aria-label="WhatsApp"><i
+              class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="foot">
+        <div class="foot-title">Horaires</div>
+        <p>Lundi - Vendredi: <strong>8h - 18h</strong></p>
+        <p>Samedi: <strong>8h - 16h</strong></p>
+        <p>Dimanche: <span style="color:#f87171">Fermée</span></p>
+      </div>
+
+      <div class="foot">
+        <div class="foot-title">Contact</div>
+        <p><i class="fas fa-map-marker-alt"></i> Ngoyo Puma, avenue terre jaune</p>
+        <p><i class="fas fa-phone"></i> <strong>+242 06 973 74 00</strong></p>
+        <p><i class="fas fa-envelope"></i> contact@crepesbeltrech.store</p>
+      </div>
+
+      <div class="foot">
+        <div class="foot-title">Liens utiles</div>
+        <ul style="list-style:none;padding:0">
+          <li><a href="#menu">Notre menu</a></li>
+          <li><a href="#home">Accueil</a></li>
+          <li><a href="#about">À propos</a></li>
+          <li><a href="mentions-legales.html" target="_blank" rel="noopener">Mentions légales</a></li>
+          <li><a href="https://www.judebela.site/" target="_blank" rel="noopener">contacter le Dévellopeur du site</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Les Crêpes de Beltrech19. Tous droits réservés.</p>
+      <p>Site développé par <a href="https://www.judebela.site" target="_blank" rel="noopener">JUDE BELA</a></p>
+    </div>
+  </footer>
+
+  <!-- ====== SCRIPTS ====== -->
+  <script>
+    // Importer les scripts
+    import("./script.js");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentions légales - Les Crêpes de Beltrech19</title>
+  <link rel="icon" href="./image/bel.jpg" type="image/jpg">
+  <style>
+    /* Styles généraux */
+    :root {
+      --primary-color: #FF7A45;
+      --primary-dark: #E86A3A;
+      --secondary-color: #FFF5EE;
+      --text-color: #333;
+      --light-gray: #f5f5f5;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: #fff;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    /* Navigation */
+    .navbar {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    
+    .navbar .inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .logo-wrap img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .brand {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .brand span {
+      color: var(--primary-color);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* Contenu principal */
+    main {
+      padding: 100px 0 60px;
+      min-height: calc(100vh - 160px);
+    }
+    
+    .legal-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .legal-header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid var(--primary-color);
+    }
+    
+    .legal-header h1 {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    
+    .legal-content {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 30px;
+    }
+    
+    .legal-section {
+      margin-bottom: 30px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .legal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .legal-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    
+    .legal-section p {
+      margin-bottom: 10px;
+    }
+    
+    .legal-section a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .legal-section a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    
+    /* Pied de page */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 25px 0;
+      text-align: center;
+    }
+    
+    .footer p {
+      margin-bottom: 10px;
+    }
+    
+    .footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar .inner {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .legal-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .legal-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="inner container">
+      <div class="logo-wrap">
+        <img src="./image/bel.jpg" alt="Logo Les Crêpes de Beltrech19">
+        <div class="brand">Les Crêpes de <span>Beltrech19</span></div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home">Retour Accueil</a></li>
+       
+      </ul>
+    </div>
+  </header> <br><br><br><br><br>
+
+  <main class="container">
+    <div class="legal-header">
+      <img src="./image/bel.jpg" alt="Logo Les Crêpes de Beltrech19">
+      <h1>Mentions légales</h1>
+    </div>
+    
+    <div class="legal-content">
+      <div class="legal-section">
+        <h2>Propriété</h2>
+        <p><strong>Les Crêpes de Beltrech19</strong><br>
+        Ngoyo Puma, avenue terre jaune<br>
+        Téléphone : +242 06 973 74 00<br>
+        Email : contact@crepesbeltrech.store<br>
+        Nom du responsable : BINN Beltrech</p>
+      </div>
+      
+      <div class="legal-section">
+        <h2>Responsable de la publication</h2>
+        <p><a href="https://www.judebela.site" target="_blank" rel="noopener" style="color: #333;"><strong>Jude Beni BELA</strong></a> : Devellopeur WEB/APPS</p>
+      </div>
+      
+      <div class="legal-section">
+        <h2>Hébergement</h2>
+        <p>Hébergé par IMS Computers<br>
+        <a href="https://www.imscomputers.com/" target="_blank" rel="noopener">www.imscomputers.com</a> sur 
+        <a href="http://lws.fr" target="_blank" rel="noopener noreferrer">www.lws.fr</a></p>
+      </div>
+      
+      <div class="legal-section">
+        <h2>Propriété intellectuelle</h2>
+        <p>Tous les contenus présents sur ce site (textes, images, logos, etc.) sont la propriété exclusive de Les Crêpes de Beltrech19, sauf mention contraire. Toute reproduction, distribution ou utilisation sans autorisation est interdite.</p>
+      </div>
+      
+      <div class="legal-section">
+        <h2>Protection des données personnelles</h2>
+        <p>Les informations collectées via le site sont utilisées uniquement pour le traitement des commandes et ne sont jamais transmises à des tiers. Conformément à la loi, vous disposez d'un droit d'accès, de modification et de suppression de vos données.</p>
+      </div>
+      
+      <div class="legal-section">
+        <h2>Contact</h2>
+        <p>Pour toute question, contactez-nous à l'adresse : <a href="mailto:monsieurjbela@gmail.com">monsieurjbela@gmail.com</a></p>
+      </div>
+    </div>
+  </main> <br><br><br>
+
+  <footer id="contact">
+    <div class="container footer">
+      <div class="copyright">
+        <p>&copy; 2025 Les Crêpes de Beltrech19. Tous droits réservés.</p>
+        <p>Site développé par <a href="https://www.judebela.site" target="_blank" rel="noopener">JUDE BELA</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

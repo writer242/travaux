@@ -1,0 +1,21 @@
+{
+  "name": "Les Crêpes de Beltrech19",
+  "short_name": "Beltrech19",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FF7A45",
+  "description": "Crêpes artisanales, qualité premium & service rapide.",
+  "icons": [
+    {
+      "src": "./image/bel.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "./image/bel.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
