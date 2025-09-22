@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimia Auto - Location de Voitures à Brazzaville et Pointe-Noire</title>
+    <meta name="description" content="Louez des voitures de qualité à Brazzaville et Pointe-Noire. Large choix de véhicules : Toyota, Ford, Chevrolet, Renault, Hyundai et Peugeot. Meilleurs prix garantis!">
+    <meta name="keywords" content="location voiture, Brazzaville, Pointe-Noire, Congo, Toyota, Ford, Chevrolet, Renault, Hyundai, Peugeot, voiture de location, SUV, berline, pickup">
+    <meta name="author" content="Kimia Auto">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.kimiaauto.cg/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kimiaauto.cg/">
+    <meta property="og:title" content="Kimia Auto - Location de Voitures à Brazzaville et Pointe-Noire">
+    <meta property="og:description" content="Louez des voitures de qualité à Brazzaville et Pointe-Noire. Large choix de véhicules : Toyota, Ford, Chevrolet, Renault, Hyundai et Peugeot.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.kimiaauto.cg/">
+    <meta property="twitter:title" content="Kimia Auto - Location de Voitures à Brazzaville et Pointe-Noire">
+    <meta property="twitter:description" content="Louez des voitures de qualité à Brazzaville et Pointe-Noire. Large choix de véhicules : Toyota, Ford, Chevrolet, Renault, Hyundai et Peugeot.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables et réinitialisation */
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-blue: #004a99;
+            --accent-blue: #0088ff;
+            --light-gray: #f5f7fa;
+            --medium-gray: #e1e5eb;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header et Navigation */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--white);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--medium-gray);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 102, 204, 0.8), rgba(0, 102, 204, 0.6)), url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Search Form */
+        .search-form {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: var(--shadow);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: var(--light-gray);
+        }
+
+        .search-btn {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        /* Filtres */
+        .filters {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .filter-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Véhicules Section */
+        .vehicles-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+
+        .vehicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .vehicle-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .vehicle-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .vehicle-info {
+            padding: 20px;
+        }
+
+        .vehicle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .vehicle-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .vehicle-price {
+            font-weight: bold;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .vehicle-type {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .vehicle-description {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .vehicle-features {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background-color: var(--light-gray);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .popular-badge {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .details-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .details-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        /* Détails du véhicule */
+        .vehicle-details {
+            padding: 40px 0;
+            background-color: var(--white);
+        }
+
+        .vehicle-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-main {
+            grid-column: 1 / -1;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-thumb {
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-thumb:hover img {
+            transform: scale(1.1);
+        }
+
+        .vehicle-details-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spec-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+        }
+
+        /* Formulaire de réservation */
+        .booking-form {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-title {
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group-full {
+            grid-column: 1 / -1;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--medium-gray);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-blue);
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent-blue);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Pages supplémentaires (initialement cachées) */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Confirmation */
+        .confirmation-container {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .confirmation-icon {
+            font-size: 4rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 15px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+        }
+
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .vehicle-details-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-blue);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: var(--shadow);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .form-grid, .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .vehicles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-options {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .search-form {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .vehicle-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .vehicle-price {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <i class="fas fa-car"></i>
+                <span>Kimia Auto</span>
+            </a>
+            <nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul id="navMenu">
+                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="#" onclick="showPage('vehicles')"><i class="fas fa-car-side"></i> Véhicules</a></li>
+                    <li><a href="#" onclick="showPage('booking')"><i class="fas fa-calendar-check"></i> Réservation</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page d'accueil -->
+    <section id="home" class="page active">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="container">
+                <h1>Louez la voiture parfaite pour vos déplacements</h1>
+                <p>Découvrez notre large gamme de véhicules à Brazzaville et Pointe-Noire</p>
+                
+                <!-- Formulaire de recherche -->
+                <div class="search-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="city">Ville de location</label>
+                            <select id="city">
+                                <option value="">Choisissez une ville</option>
+                                <option value="brazzaville">Brazzaville</option>
+                                <option value="pointe-noire">Pointe-Noire</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="pickup-date">Date de prise en charge</label>
+                            <input type="date" id="pickup-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="return-date">Date de restitution</label>
+                            <input type="date" id="return-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle-type">Type de véhicule</label>
+                            <select id="vehicle-type">
+                                <option value="">Tous types</option>
+                                <option value="berline">Berline</option>
+                                <option value="suv">SUV</option>
+                                <option value="pickup">Pick-up</option>
+                                <option value="break">Break</option>
+                                <option value="bus">Bus</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="search-btn" onclick="searchVehicles()">
+                        <i class="fas fa-search"></i> Rechercher
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Véhicules populaires -->
+        <div class="vehicles-section">
+            <div class="container">
+                <h2 class="section-title">Véhicules Populaires</h2>
+                
+                <!-- Filtres -->
+                <div class="filters">
+                    <h3 class="filter-title">Filtrer par :</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" onclick="filterVehicles('all')">Tous</button>
+                        <button class="filter-btn" onclick="filterVehicles('brand', 'toyota')">Toyota</button>
+                        <button class="filter-btn" onclick="filterVehicles('brand', 'ford')">Ford</button>
+                        <button class="filter-btn" onclick="filterVehicles('brand', 'chevrolet')">Chevrolet</button>
+                        <button class="filter-btn" onclick="filterVehicles('brand', 'renault')">Renault</button>
+                        <button class="filter-btn" onclick="filterVehicles('brand', 'hyundai')">Hyundai</button>
+                        <button class="filter-btn" onclick="filterVehicles('brand', 'peugeot')">Peugeot</button>
+                        <button class="filter-btn" onclick="filterVehicles('type', 'suv')">SUV</button>
+                        <button class="filter-btn" onclick="filterVehicles('type', 'berline')">Berline</button>
+                        <button class="filter-btn" onclick="filterVehicles('type', 'pickup')">Pick-up</button>
+                    </div>
+                </div>
+                
+                <!-- Grille de véhicules -->
+                <div class="vehicles-grid">
+                    <!-- Véhicules -->
+                    <div class="vehicle-card" data-brand="toyota" data-type="suv">
+                        <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toyota RAV4 SUV de location à Brazzaville" class="vehicle-image">
+                        <div class="vehicle-info">
+                            <div class="popular-badge">Populaire</div>
+                            <div class="vehicle-header">
+                                <h3 class="vehicle-name">Toyota RAV4</h3>
+                                <div class="vehicle-price">45 000 XAF</div>
+                            </div>
+                            <div class="vehicle-type">
+                                <i class="fas fa-car"></i>
+                                <span>SUV</span>
+                            </div>
+                            <p class="vehicle-description">SUV confortable et spacieux, idéal pour les familles et les longs trajets.</p>
+                            <div class="vehicle-features">
+                                <span class="feature"><i class="fas fa-snowflake"></i> Climatisation</span>
+                                <span class="feature"><i class="fas fa-cog"></i> Automatique</span>
+                                <span class="feature"><i class="fas fa-user-friends"></i> 5 passagers</span>
+                            </div>
+                            <button class="details-btn" onclick="showVehicleDetail('toyota-rav4')">Voir détails</button>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-card" data-brand="ford" data-type="suv">
+                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ford Explorer SUV de location à Brazzaville" class="vehicle-image">
+                        <div class="vehicle-info">
+                            <div class="popular-badge">Populaire</div>
+                            <div class="vehicle-header">
+                                <h3 class="vehicle-name">Ford Explorer</h3>
+                                <div class="vehicle-price">60 000 XAF</div>
+                            </div>
+                            <div class="vehicle-type">
+                                <i class="fas fa-car"></i>
+                                <span>SUV</span>
+                            </div>
+                            <p class="vehicle-description">SUV spacieux et puissant, idéal pour les familles nombreuses et les longs trajets.</p>
+                            <div class="vehicle-features">
+                                <span class="feature"><i class="fas fa-snowflake"></i> Climatisation</span>
+                                <span class="feature"><i class="fas fa-cog"></i> Automatique</span>
+                                <span class="feature"><i class="fas fa-user-friends"></i> 7 passagers</span>
+                            </div>
+                            <button class="details-btn" onclick="showVehicleDetail('ford-explorer')">Voir détails</button>
+                        </div>
+                    </div>
+                    
+                    <div class="vehicle-card" data-brand="chevrolet" data-type="pickup">
+                        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chevrolet Colorado Pick-up de location à Pointe-Noire" class="vehicle-image">
+                        <div class="vehicle-info">
+                            <div class="popular-badge">Populaire</div>
+                            <div class="vehicle-header">
+                                <h3 class="vehicle-name">Chevrolet Colorado</h3>
+                                <div class="vehicle-price">59 000 XAF</div>
+                            </div>
+                            <div class="vehicle-type">
+                                <i class="fas fa-truck-pickup"></i>
+                                <span>Pick-up</span>
+                            </div>
+                            <p class="vehicle-description">Pick-up puissant et fiable, idéal pour le travail et les loisirs en extérieur.</p>
+                            <div class="vehicle-features">
+                                <span class="feature"><i class="fas fa-snowflake"></i> Climatisation</span>
+                                <span class="feature"><i class="fas fa-cog"></i> Manuelle</span>
+                                <span class="feature"><i class="fas fa-user-friends"></i> 5 passagers</span>
+                            </div>
+                            <button class="details-btn" onclick="showVehicleDetail('chevrolet-colorado')">Voir détails</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page de résultats de véhicules -->
+    <section id="vehicles" class="page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#" onclick="showPage('home')">Accueil</a>
+                <span>></span>
+                <span>Véhicules Disponibles</span>
+            </div>
+            
+            <h2 class="section-title">Véhicules Disponibles</h2>
+            
+            <!-- Filtres -->
+            <div class="filters">
+                <h3 class="filter-title">Filtrer par :</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" onclick="filterVehicles('all')">Tous</button>
+                    <button class="filter-btn" onclick="filterVehicles('brand', 'toyota')">Toyota</button>
+                    <button class="filter-btn" onclick="filterVehicles('brand', 'ford')">Ford</button>
+                    <button class="filter-btn" onclick="filterVehicles('brand', 'chevrolet')">Chevrolet</button>
+                    <button class="filter-btn" onclick="filterVehicles('brand', 'renault')">Renault</button>
+                    <button class="filter-btn" onclick="filterVehicles('brand', 'hyundai')">Hyundai</button>
+                    <button class="filter-btn" onclick="filterVehicles('brand', 'peugeot')">Peugeot</button>
+                    <button class="filter-btn" onclick="filterVehicles('type', 'suv')">SUV</button>
+                    <button class="filter-btn" onclick="filterVehicles('type', 'berline')">Berline</button>
+                    <button class="filter-btn" onclick="filterVehicles('type', 'pickup')">Pick-up</button>
+                </div>
+            </div>
+            
+            <!-- Résultats -->
+            <div class="vehicles-grid" id="vehiclesResults">
+                <!-- Les véhicules seront chargés ici par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Page de détails de véhicule -->
+    <section id="vehicle-detail" class="page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#" onclick="showPage('home')">Accueil</a>
+                <span>></span>
+                <a href="#" onclick="showPage('vehicles')">Véhicules</a>
+                <span>></span>
+                <span id="breadcrumb-vehicle-name">Détails du véhicule</span>
+            </div>
+            
+            <div id="vehicleDetailContent">
+                <!-- Le contenu des détails de véhicule sera chargé ici par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Page de réservation -->
+    <section id="booking" class="page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#" onclick="showPage('home')">Accueil</a>
+                <span>></span>
+                <a href="#" onclick="showPage('vehicles')">Véhicules</a>
+                <span>></span>
+                <span>Réservation</span>
+            </div>
+            
+            <div class="booking-form">
+                <h2 class="form-title">Réserver un véhicule</h2>
+                <div id="bookingFormContent">
+                    <!-- Le formulaire de réservation sera chargé ici par JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page de confirmation -->
+    <section id="confirmation" class="page">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="#" onclick="showPage('home')">Accueil</a>
+                <span>></span>
+                <span>Confirmation</span>
+            </div>
+            
+            <div class="confirmation-container">
+                <div class="confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Réservation Confirmée!</h2>
+                <p id="confirmationMessage">Votre réservation a été effectuée avec succès. Un email de confirmation a été envoyé.</p>
+                <button class="details-btn" onclick="showPage('home')" style="margin-top: 20px;">
+                    Retour à l'accueil
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Kimia Auto</h3>
+                    <p>Votre partenaire de confiance pour la location de véhicules au Congo. Des solutions de mobilité adaptées à tous vos besoins.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Nos agences</h3>
+                    <ul>
+                        <li><a href="#">Brazzaville - Centre-ville</a></li>
+                        <li><a href="#">Pointe-Noire - Centre commercial</a></li>
+                        <li><a href="#">Aéroport de Brazzaville</a></li>
+                        <li><a href="#">Aéroport de Pointe-Noire</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Liens Utiles</h3>
+                    <ul>
+                        <li><a href="#">À propos de nous</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                        <li><a href="#">Conditions générales</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +242 05 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> contact@kimiaauto.cg</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Avenue de la Paix, Brazzaville</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Kimia Auto - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Données des véhicules
+        const vehicles = {
+            "brazzaville": [
+                {
+                    id: "toyota-rav4",
+                    brand: "Toyota",
+                    model: "RAV4",
+                    type: "suv",
+                    price: 45000,
+                    image: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV confortable et spacieux, idéal pour les familles et les longs trajets.",
+                    location: "Brazzaville, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Automatique", "5 passagers", "GPS", "Sièges cuir"],
+                    specs: {
+                        engine: "2.5L Essence",
+                        consumption: "7.5L/100km",
+                        doors: "5",
+                        bags: "2 grandes valises",
+                        transmission: "Automatique"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "hyundai-elantra",
+                    brand: "Hyundai",
+                    model: "Elantra",
+                    type: "berline",
+                    price: 35000,
+                    image: "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Berline élégante et économique, parfaite pour la ville et les trajets professionnels.",
+                    location: "Brazzaville, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "Bluetooth"],
+                    specs: {
+                        engine: "1.6L Essence",
+                        consumption: "6.2L/100km",
+                        doors: "4",
+                        bags: "1 grande valise",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "toyota-hilux",
+                    brand: "Toyota",
+                    model: "Hilux",
+                    type: "pickup",
+                    price: 55000,
+                    image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Pick-up robuste et fiable, idéal pour les terrains difficiles et le transport de marchandises.",
+                    location: "Brazzaville, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "4x4"],
+                    specs: {
+                        engine: "2.8L Diesel",
+                        consumption: "8.5L/100km",
+                        doors: "4",
+                        capacity: "1 tonne",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1557223562-6c77ef16210f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "ford-focus",
+                    brand: "Ford",
+                    model: "Focus",
+                    type: "berline",
+                    price: 38000,
+                    image: "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Berline compacte et économique, parfaite pour la ville avec un excellent confort de conduite.",
+                    location: "Brazzaville, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "Bluetooth", "Ecran tactile"],
+                    specs: {
+                        engine: "1.5L Essence",
+                        consumption: "6.0L/100km",
+                        doors: "4",
+                        bags: "2 valises",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "ford-explorer",
+                    brand: "Ford",
+                    model: "Explorer",
+                    type: "suv",
+                    price: 60000,
+                    image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV spacieux et puissant, idéal pour les familles nombreuses et les longs trajets.",
+                    location: "Brazzaville, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Automatique", "7 passagers", "GPS", "Sièges cuir", "4x4"],
+                    specs: {
+                        engine: "2.3L EcoBoost",
+                        consumption: "9.2L/100km",
+                        doors: "5",
+                        bags: "4 grandes valises",
+                        transmission: "Automatique"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "ford-ranger",
+                    brand: "Ford",
+                    model: "Ranger",
+                    type: "pickup",
+                    price: 58000,
+                    image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Pick-up robuste et polyvalent, parfait pour le travail et les aventures tout-terrain.",
+                    location: "Brazzaville, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "4x4", "Toit ouvrant"],
+                    specs: {
+                        engine: "2.0L Diesel",
+                        consumption: "8.3L/100km",
+                        doors: "4",
+                        capacity: "1.1 tonne",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1557223562-6c77ef16210f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "chevrolet-spark",
+                    brand: "Chevrolet",
+                    model: "Spark",
+                    type: "berline",
+                    price: 32000,
+                    image: "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Petite citadine économique et maniable, parfaite pour la circulation en ville.",
+                    location: "Brazzaville, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "Économique"],
+                    specs: {
+                        engine: "1.2L Essence",
+                        consumption: "5.5L/100km",
+                        doors: "4",
+                        bags: "1 valise",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "chevrolet-trailblazer",
+                    brand: "Chevrolet",
+                    model: "Trailblazer",
+                    type: "suv",
+                    price: 62000,
+                    image: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV robuste et spacieux, conçu pour les familles et les aventures en plein air.",
+                    location: "Brazzaville, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Automatique", "7 passagers", "GPS", "4x4", "Toit panoramique"],
+                    specs: {
+                        engine: "2.8L Diesel",
+                        consumption: "8.8L/100km",
+                        doors: "5",
+                        bags: "4 grandes valises",
+                        transmission: "Automatique"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "chevrolet-colorado",
+                    brand: "Chevrolet",
+                    model: "Colorado",
+                    type: "pickup",
+                    price: 59000,
+                    image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Pick-up puissant et fiable, idéal pour le travail et les loisirs en extérieur.",
+                    location: "Brazzaville, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "4x4", "Plateau spacieux"],
+                    specs: {
+                        engine: "2.5L Diesel",
+                        consumption: "8.5L/100km",
+                        doors: "4",
+                        capacity: "1.2 tonne",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1557223562-6c77ef16210f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "renault-clio",
+                    brand: "Renault",
+                    model: "Clio",
+                    type: "berline",
+                    price: 34000,
+                    image: "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Citadine moderne et économique, parfaite pour la ville avec un design attractif.",
+                    location: "Brazzaville, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "Écran tactile", "Bluetooth"],
+                    specs: {
+                        engine: "1.2L Essence",
+                        consumption: "5.8L/100km",
+                        doors: "4",
+                        bags: "1 valise",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "renault-kadjar",
+                    brand: "Renault",
+                    model: "Kadjar",
+                    type: "suv",
+                    price: 52000,
+                    image: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV compact et polyvalent, alliant confort et praticité pour un usage urbain et familial.",
+                    location: "Brazzaville, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "GPS", "Toit panoramique"],
+                    specs: {
+                        engine: "1.3L Essence",
+                        consumption: "6.5L/100km",
+                        doors: "5",
+                        bags: "2 grandes valises",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "renault-alaskan",
+                    brand: "Renault",
+                    model: "Alaskan",
+                    type: "pickup",
+                    price: 61000,
+                    image: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Pick-up robuste et performant, conçu pour les professionnels et les aventuriers.",
+                    location: "Brazzaville, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "4x4", "Plateau utilitaire"],
+                    specs: {
+                        engine: "2.3L Diesel",
+                        consumption: "8.7L/100km",
+                        doors: "4",
+                        capacity: "1.1 tonne",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1557223562-6c77ef16210f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                }
+            ],
+            "pointe-noire": [
+                {
+                    id: "peugeot-508",
+                    brand: "Peugeot",
+                    model: "508",
+                    type: "berline",
+                    price: 50000,
+                    image: "https://images.unsplash.com/photo-1606152536277-5aa1fd33e250?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Berline premium au design élégant, avec un intérieur raffiné et des technologies avancées.",
+                    location: "Pointe-Noire, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Automatique", "5 passagers", "GPS", "Sièges cuir", "Toit panoramique"],
+                    specs: {
+                        engine: "1.6L Turbo Essence",
+                        consumption: "6.8L/100km",
+                        doors: "4",
+                        bags: "2 grandes valises",
+                        transmission: "Automatique"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1606152536277-5aa1fd33e250?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1606152536310-9s4a1e0b50fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1606152536343-c92d4a6adebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "hyundai-h1",
+                    brand: "Hyundai",
+                    model: "H1",
+                    type: "bus",
+                    price: 75000,
+                    image: "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "Van spacieux pouvant accueillir jusqu'à 9 passagers, idéal pour les groupes et familles nombreuses.",
+                    location: "Pointe-Noire, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "9 passagers", "GPS"],
+                    specs: {
+                        engine: "2.5L Diesel",
+                        consumption: "9.5L/100km",
+                        doors: "5",
+                        bags: "4 valises",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1549399542-7e821f6a9fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "bmw-x5",
+                    brand: "BMW",
+                    model: "X5",
+                    type: "suv",
+                    price: 85000,
+                    image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV luxueux et performant, alliant confort, technologie et puissance.",
+                    location: "Pointe-Noire, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Automatique", "5 passagers", "GPS", "Sièges cuir", "Toit panoramique", "4x4"],
+                    specs: {
+                        engine: "3.0L Essence",
+                        consumption: "8.9L/100km",
+                        doors: "5",
+                        bags: "3 grandes valises",
+                        transmission: "Automatique"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "ford-escape",
+                    brand: "Ford",
+                    model: "Escape",
+                    type: "suv",
+                    price: 57000,
+                    image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV compact et polyvalent, parfait pour la ville et les escapades weekend.",
+                    location: "Pointe-Noire, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Automatique", "5 passagers", "GPS", "Toit panoramique"],
+                    specs: {
+                        engine: "1.5L EcoBoost",
+                        consumption: "7.8L/100km",
+                        doors: "5",
+                        bags: "2 grandes valises",
+                        transmission: "Automatique"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "chevrolet-trax",
+                    brand: "Chevrolet",
+                    model: "Trax",
+                    type: "suv",
+                    price: 48000,
+                    image: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV compact et urbain, économique et facile à manœuvrer en ville.",
+                    location: "Pointe-Noire, Congo",
+                    popular: false,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "Connectivité Bluetooth"],
+                    specs: {
+                        engine: "1.4L Turbo Essence",
+                        consumption: "7.2L/100km",
+                        doors: "5",
+                        bags: "1 grande valise",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                },
+                {
+                    id: "renault-duster",
+                    brand: "Renault",
+                    model: "Duster",
+                    type: "suv",
+                    price: 46000,
+                    image: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    description: "SUV robuste et économique, parfait pour les routes difficiles et les budgets serrés.",
+                    location: "Pointe-Noire, Congo",
+                    popular: true,
+                    features: ["Climatisation", "Manuelle", "5 passagers", "4x4", "Suspension renforcée"],
+                    specs: {
+                        engine: "1.6L Essence",
+                        consumption: "7.0L/100km",
+                        doors: "5",
+                        bags: "2 valises",
+                        transmission: "Manuelle"
+                    },
+                    gallery: [
+                        "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                        "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    ]
+                }
+            ]
+        };
+
+        // Fonctions de navigation
+        function showPage(pageId) {
+            // Masquer toutes les pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Afficher la page demandée
+            document.getElementById(pageId).classList.add('active');
+            
+            // Mettre à jour le titre de la page
+            const pageTitles = {
+                'home': 'Kimia Auto - Location de Voitures à Brazzaville et Pointe-Noire',
+                'vehicles': 'Véhicules Disponibles - Kimia Auto',
+                'vehicle-detail': 'Détails du Véhicule - Kimia Auto',
+                'booking': 'Réservation - Kimia Auto',
+                'confirmation': 'Confirmation - Kimia Auto'
+            };
+            
+            if (pageTitles[pageId]) {
+                document.title = pageTitles[pageId];
+            }
+            
+            // Scroll vers le haut
+            window.scrollTo(0, 0);
+        }
+
+        // Filtrage des véhicules
+        function filterVehicles(filterType, value) {
+            const vehicleCards = document.querySelectorAll('.vehicle-card');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            // Mettre à jour les boutons de filtre actifs
+            filterButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            // Filtrer les véhicules
+            vehicleCards.forEach(card => {
+                if (filterType === 'all') {
+                    card.style.display = 'block';
+                } else if (filterType === 'brand' && card.getAttribute('data-brand') === value) {
+                    card.style.display = 'block';
+                } else if (filterType === 'type' && card.getAttribute('data-type') === value) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Recherche de véhicules
+        function searchVehicles() {
+            const city = document.getElementById('city').value;
+            const pickupDate = document.getElementById('pickup-date').value;
+            const returnDate = document.getElementById('return-date').value;
+            const vehicleType = document.getElementById('vehicle-type').value;
+            
+            if (!city) {
+                alert('Veuillez sélectionner une ville');
+                return;
+            }
+            
+            // Afficher la page des résultats
+            showPage('vehicles');
+            
+            // Filtrer les véhicules selon la ville sélectionnée
+            const vehiclesGrid = document.getElementById('vehiclesResults');
+            vehiclesGrid.innerHTML = '';
+            
+            vehicles[city].forEach(vehicle => {
+                if (vehicleType && vehicle.type !== vehicleType) return;
+                
+                const vehicleCard = document.createElement('div');
+                vehicleCard.className = 'vehicle-card';
+                vehicleCard.setAttribute('data-brand', vehicle.brand.toLowerCase());
+                vehicleCard.setAttribute('data-type', vehicle.type);
+                
+                vehicleCard.innerHTML = `
+                    <img src="${vehicle.image}" alt="${vehicle.brand} ${vehicle.model} de location à ${city === 'brazzaville' ? 'Brazzaville' : 'Pointe-Noire'}" class="vehicle-image">
+                    <div class="vehicle-info">
+                        ${vehicle.popular ? '<div class="popular-badge">Populaire</div>' : ''}
+                        <div class="vehicle-header">
+                            <h3 class="vehicle-name">${vehicle.brand} ${vehicle.model}</h3>
+                            <div class="vehicle-price">${vehicle.price.toLocaleString()} XAF</div>
+                        </div>
+                        <div class="vehicle-type">
+                            <i class="fas fa-${getVehicleIcon(vehicle.type)}"></i>
+                            <span>${getVehicleTypeLabel(vehicle.type)}</span>
+                        </div>
+                        <p class="vehicle-description">${vehicle.description}</p>
+                        <div class="vehicle-features">
+                            ${vehicle.features.slice(0, 3).map(feature => `<span class="feature">${getFeatureIcon(feature)} ${feature}</span>`).join('')}
+                        </div>
+                        <button class="details-btn" onclick="showVehicleDetail('${vehicle.id}')">Voir détails</button>
+                    </div>
+                `;
+                
+                vehiclesGrid.appendChild(vehicleCard);
+            });
+        }
+
+        // Obtenir l'icône correspondant au type de véhicule
+        function getVehicleIcon(type) {
+            const icons = {
+                'berline': 'car',
+                'suv': 'car',
+                'pickup': 'truck-pickup',
+                'break': 'car',
+                'bus': 'bus'
+            };
+            return icons[type] || 'car';
+        }
+
+        // Obtenir le libellé correspondant au type de véhicule
+        function getVehicleTypeLabel(type) {
+            const labels = {
+                'berline': 'Berline',
+                'suv': 'SUV',
+                'pickup': 'Pick-up',
+                'break': 'Break',
+                'bus': 'Bus'
+            };
+            return labels[type] || type;
+        }
+
+        // Obtenir l'icône correspondant à une caractéristique
+        function getFeatureIcon(feature) {
+            const icons = {
+                'Climatisation': 'snowflake',
+                'Automatique': 'cog',
+                'Manuelle': 'cog',
+                'GPS': 'map-marker-alt',
+                'Sièges cuir': 'chair',
+                'Toit panoramique': 'sun',
+                '4x4': 'car-side',
+                'Bluetooth': 'bluetooth',
+                'Ecran tactile': 'tv',
+                'Économique': 'coins',
+                'Plateau spacieux': 'shipping-fast',
+                'Toit ouvrant': 'sun',
+                'Connectivité Bluetooth': 'bluetooth',
+                'Suspension renforcée': 'tools',
+                'Plateau utilitaire': 'truck-loading'
+            };
+            
+            const iconName = icons[feature] || 'check';
+            return `<i class="fas fa-${iconName}"></i>`;
+        }
+
+        // Affichage des détails d'un véhicule
+        function showVehicleDetail(vehicleId) {
+            let vehicle = null;
+            let city = null;
+            
+            // Trouver le véhicule dans les données
+            for (const [key, cityVehicles] of Object.entries(vehicles)) {
+                const foundVehicle = cityVehicles.find(v => v.id === vehicleId);
+                if (foundVehicle) {
+                    vehicle = foundVehicle;
+                    city = key;
+                    break;
+                }
+            }
+            
+            if (!vehicle) return;
+            
+            // Mettre à jour le fil d'Ariane
+            document.getElementById('breadcrumb-vehicle-name').textContent = `${vehicle.brand} ${vehicle.model}`;
+            
+            // Construire le HTML des détails du véhicule
+            const vehicleDetailContent = document.getElementById('vehicleDetailContent');
+            
+            vehicleDetailContent.innerHTML = `
+                <button onclick="showPage('vehicles')" style="background: none; border: none; color: var(--primary-blue); margin-bottom: 20px; display: flex; align-items: center;">
+                    <i class="fas fa-arrow-left"></i> Retour aux résultats
+                </button>
+                
+                <h2>${vehicle.brand} ${vehicle.model}</h2>
+                <div class="vehicle-type" style="margin-bottom: 20px;">
+                    <i class="fas fa-${getVehicleIcon(vehicle.type)}"></i>
+                    <span>${getVehicleTypeLabel(vehicle.type)} - ${vehicle.location}</span>
+                </div>
+                
+                <div class="vehicle-gallery">
+                    <div class="gallery-main">
+                        <img src="${vehicle.gallery[0]}" alt="${vehicle.brand} ${vehicle.model} - Vue principale" id="mainGalleryImage">
+                    </div>
+                    ${vehicle.gallery.map((img, index) => `
+                        <div class="gallery-thumb" onclick="document.getElementById('mainGalleryImage').src = '${img}'">
+                            <img src="${img}" alt="${vehicle.brand} ${vehicle.model} - Vue ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="vehicle-details-grid">
+                    <div>
+                        <h3>Description</h3>
+                        <p>${vehicle.description}</p>
+                        
+                        <h3 style="margin-top: 20px;">Caractéristiques</h3>
+                        <div class="vehicle-features">
+                            ${vehicle.features.map(feature => `<span class="feature">${getFeatureIcon(feature)} ${feature}</span>`).join('')}
+                        </div>
+                        
+                        <h3 style="margin-top: 20px;">Spécifications techniques</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <div>
+                                    <strong>Moteur</strong>
+                                    <p>${vehicle.specs.engine}</p>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-gas-pump"></i>
+                                </div>
+                                <div>
+                                    <strong>Consommation</strong>
+                                    <p>${vehicle.specs.consumption}</p>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-door-open"></i>
+                                </div>
+                                <div>
+                                    <strong>Portes</strong>
+                                    <p>${vehicle.specs.doors}</p>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-suitcase"></i>
+                                </div>
+                                <div>
+                                    <strong>Bagages</strong>
+                                    <p>${vehicle.specs.bags || vehicle.specs.capacity}</p>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <div>
+                                    <strong>Transmission</strong>
+                                    <p>${vehicle.specs.transmission}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div style="background: var(--light-gray); padding: 20px; border-radius: 8px;">
+                            <div style="font-size: 1.8rem; font-weight: bold; color: var(--primary-blue); margin-bottom: 15px;">
+                                ${vehicle.price.toLocaleString()} XAF <span style="font-size: 1rem; color: #666;">/jour</span>
+                            </div>
+                            <button class="details-btn" onclick="showBookingForm('${vehicle.id}', '${city}')">
+                                Réserver ce véhicule
+                            </button>
+                        </div>
+                        
+                        <div style="margin-top: 20px; background: var(--light-gray); padding: 20px; border-radius: 8px;">
+                            <h3>Disponibilité</h3>
+                            <p style="margin: 10px 0;">Ce véhicule est disponible à la location.</p>
+                            <p><i class="fas fa-map-marker-alt"></i> ${vehicle.location}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Afficher la page de détails
+            showPage('vehicle-detail');
+        }
+
+        // Affichage du formulaire de réservation
+        function showBookingForm(vehicleId, city) {
+            const vehicle = vehicles[city].find(v => v.id === vehicleId);
+            if (!vehicle) return;
+            
+            const bookingFormContent = document.getElementById('bookingFormContent');
+            
+            bookingFormContent.innerHTML = `
+                <div style="display: flex; gap: 20px; margin-bottom: 30px;">
+                    <img src="${vehicle.image}" alt="${vehicle.brand} ${vehicle.model} - Réservation" style="width: 150px; height: 100px; object-fit: cover; border-radius: 8px;">
+                    <div>
+                        <h3>${vehicle.brand} ${vehicle.model}</h3>
+                        <p>${getVehicleTypeLabel(vehicle.type)} - ${vehicle.location}</p>
+                        <p><strong>${vehicle.price.toLocaleString()} XAF / jour</strong></p>
+                    </div>
+                </div>
+                
+                <form onsubmit="processBooking(event, '${vehicleId}', '${city}')">
+                    <h3 style="margin-bottom: 15px;">Informations personnelles</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Prénom</label>
+                            <input type="text" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nom</label>
+                            <input type="text" id="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin: 20px 0 15px;">Détails de la location</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookingPickupDate">Date de prise en charge</label>
+                            <input type="date" id="bookingPickupDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingReturnDate">Date de restitution</label>
+                            <input type="date" id="bookingReturnDate" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bookingCity">Ville de prise en charge</label>
+                            <select id="bookingCity" required>
+                                <option value="">Choisissez une ville</option>
+                                <option value="brazzaville">Brazzaville</option>
+                                <option value="pointe-noire">Pointe-Noire</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingLocation">Lieu de prise en charge</label>
+                            <select id="bookingLocation" required>
+                                <option value="">Choisissez un lieu</option>
+                                <option value="agence-centre">Agence Centre-ville</option>
+                                <option value="aeroport">Aéroport</option>
+                                <option value="hotel">Hôtel</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group-full">
+                        <label for="license">Permis de conduire</label>
+                        <div class="file-upload" onclick="document.getElementById('licenseFile').click()">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                            <p>Cliquez pour téléverser votre permis de conduire</p>
+                            <input type="file" id="licenseFile" style="display: none;" accept="image/*,.pdf">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="details-btn" style="width: 100%; margin-top: 20px;">
+                        Envoyer la demande
+                    </button>
+                </form>
+            `;
+            
+            // Définir les dates min pour les champs de date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('bookingPickupDate').setAttribute('min', today);
+            document.getElementById('bookingReturnDate').setAttribute('min', today);
+            
+            // Pré-remplir la ville si elle est connue
+            if (city) {
+                document.getElementById('bookingCity').value = city;
+            }
+            
+            // Afficher la page de réservation
+            showPage('booking');
+        }
+
+        // Traitement de la réservation
+        function processBooking(event, vehicleId, city) {
+            event.preventDefault();
+            
+            const vehicle = vehicles[city].find(v => v.id === vehicleId);
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const pickupDate = document.getElementById('bookingPickupDate').value;
+            const returnDate = document.getElementById('bookingReturnDate').value;
+            
+            // Construire le message de confirmation
+            const confirmationMessage = `Merci ${firstName} ${lastName}! Votre réservation du ${vehicle.brand} ${vehicle.model} est confirmée du ${pickupDate} au ${returnDate}. Un email de confirmation a été envoyé.`;
+            
+            document.getElementById('confirmationMessage').textContent = confirmationMessage;
+            
+            // Afficher la page de confirmation
+            showPage('confirmation');
+        }
+
+        // Initialisation au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu mobile
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                document.getElementById('navMenu').classList.toggle('show');
+            });
+            
+            // Définir les dates min pour les champs de date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('pickup-date').setAttribute('min', today);
+            document.getElementById('return-date').setAttribute('min', today);
+            
+            // Définir la date de prise en charge à aujourd'hui et de restitution à demain
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            
+            document.getElementById('pickup-date').value = today;
+            document.getElementById('return-date').value = tomorrowStr;
+        });
+    </script>
+</body>
+</html>
